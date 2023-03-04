@@ -17,6 +17,11 @@ public class AgentController : MonoBehaviour
         tr = transform;
     }
 
+    void OnDestroy()
+    {
+        tr.DOKill();
+    }
+
     public void Init(AgentsManager setAgentsManager)
     {
         agentsManager = setAgentsManager;
@@ -30,18 +35,6 @@ public class AgentController : MonoBehaviour
         tr.DOMove(destination, duration)
             .SetEase(Ease.Linear)
             .onComplete = DestinationReached;
-
-        // Sequence mySequence = DOTween.Sequence();
-        //
-        // destination = agentsManager.GetRandomPoint();
-        // float duration = Vector3.Distance(tr.position, destination) / moveSpeed;
-        //
-        // mySequence.Append(
-        //     tr.DOMove(destination, duration)
-        //         .SetEase(Ease.Linear)
-        // );
-        //
-        // mySequence.OnComplete(DestinationReached);
     }
 
     internal void DestinationReached()
