@@ -51,11 +51,10 @@ public class AgentsManager : MonoBehaviour
         GameObject newAgent = Instantiate(agentPrefab);
         allAgents.Add(newAgent);
 
-        newAgent.transform.position = new Vector3(
-            Random.Range(-groundSizeX, groundSizeX),
-            0f,
-            Random.Range(-groundSizeZ, groundSizeZ)
-        );
+        newAgent.transform.position = GetRandomPoint();
+        AgentController agentController = newAgent.GetComponent<AgentController>();
+        agentController.Init(this);
+        agentController.MoveToNewDestination();
         
         if (onAgentsNumChanged != null)
         {
@@ -98,5 +97,14 @@ public class AgentsManager : MonoBehaviour
         {
             onAgentsNumChanged(allAgents.Count);
         }
+    }
+
+    public Vector3 GetRandomPoint()
+    {
+        return new Vector3(
+            Random.Range(-groundSizeX, groundSizeX),
+            0f,
+            Random.Range(-groundSizeZ, groundSizeZ)
+        );
     }
 }

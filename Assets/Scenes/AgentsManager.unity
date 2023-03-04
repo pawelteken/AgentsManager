@@ -2034,7 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879a08e01854d0940a556385ebc380e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 1696014694992928748, guid: d079cd0e6137a44b58864c3a91ad119a,
+  agentPrefab: {fileID: 6939724523886469028, guid: 4e1a62ec49d549c4b8f90b5baad457fb,
     type: 3}
   ground: {fileID: 342260291}
 --- !u!4 &1777765390
