@@ -17,7 +17,7 @@ public class AgentController : MonoBehaviour
         tr = transform;
     }
 
-    void OnDestroy()
+    public virtual void OnDestroy()
     {
         tr.DOKill();
     }

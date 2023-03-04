@@ -8,11 +8,18 @@ using UnityEngine;
 public class AgentPathfinderController : AgentController
 {
     Seeker seeker;
+    Sequence mySequence;
 
-    override public void Awake()
+    public override void Awake()
     {
         base.Awake();
         seeker = GetComponent<Seeker>();
+    }
+
+    public override void OnDestroy()
+    {
+        mySequence.Kill();
+        base.OnDestroy();
     }
 
     public override void MoveToNewDestination()
@@ -31,7 +38,7 @@ public class AgentPathfinderController : AgentController
         {
             Vector3 lastPoint = tr.position;
             
-            Sequence mySequence = DOTween.Sequence();
+            mySequence = DOTween.Sequence();
             
             for (int i = 0; i < p.path.Count; i++)
             {
