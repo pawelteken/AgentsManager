@@ -13,12 +13,15 @@ public class AgentsManager : MonoBehaviour
     
     List<GameObject> allAgents = new List<GameObject>();
 
+    Transform tr;
+    
     float planeSize = 5f;
     float groundSizeX;
     float groundSizeZ;
 
     void Awake()
     {
+        tr = transform;
         groundSizeX = ground.lossyScale.x * planeSize;
         groundSizeZ = ground.lossyScale.z * planeSize;
     }
@@ -48,7 +51,7 @@ public class AgentsManager : MonoBehaviour
 
     public void SpawnAgent()
     {
-        GameObject newAgent = Instantiate(agentPrefab);
+        GameObject newAgent = Instantiate(agentPrefab, tr);
         allAgents.Add(newAgent);
 
         newAgent.transform.position = GetRandomPoint();
