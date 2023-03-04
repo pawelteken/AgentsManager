@@ -32,6 +32,7 @@ public class AgentController : MonoBehaviour
         destination = agentsManager.GetRandomPoint();
         tr.LookAt(destination);
         float duration = Vector3.Distance(tr.position, destination) / moveSpeed;
+        
         tr.DOMove(destination, duration)
             .SetEase(Ease.Linear)
             .onComplete = DestinationReached;
